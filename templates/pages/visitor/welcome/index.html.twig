@@ -1,0 +1,83 @@
+{% extends "themes/visitor/base.html.twig" %}
+
+{% block title %}
+	Healthy-food
+{% endblock %}
+
+{% block description %}
+	Recettes de plats sains sucrés,salés et bébé : Se régaler et surtout se faire plaisir sans culpabiliser !
+{% endblock %}
+
+{% block keywords %}
+	recettes, healthy, sain, sucrés, salés, bébé ,jus
+{% endblock %}
+
+{% block main %}
+	<main class="index">
+		<div>
+			<img src="{{asset('/images/accueil2.jpg')}}" class="img-fluid" alt="...">
+		</div>
+		<div class=" container">
+			<div class=" row row-cols-1 row-cols-md-2 g-5 py-3">
+				<div class="col card-recette">
+					<div class="card border border-success shadow">
+
+						<img src="{{asset('/images/recette_salées.jpg')}}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h4 class="card-title text-success">Recette salées
+							</h4>
+							<p class="card-text">Découvrir toutes nos recettes salées en détails.</p>
+							<a href="#">
+								<button type="button" class="btn btn-outline-success">voir les recettes
+								</button>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col card-recette">
+					<div class="card border-success shadow">
+						<img src="{{asset('/images/recette_sucrées.jpg')}}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h4 class="card-title text-success">Recettes sucrées</h4>
+							<p class="card-text">Découvrir toutes nos recettes sucrées en détails..</p>
+							<a href="#">
+								<button type="button" class="btn btn-outline-success">voir les recettes
+								</button>
+							</a>
+
+						</div>
+					</div>
+				</div>
+				
+				<div class="col card-recette">
+					<div class="card border-success shadow">
+						<img src="{{asset('/images/recette_bebe.jpg.webp')}}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h4 class="card-title text-success">Recttes Bébé</h4>
+							<p class="card-text">Découvrir toutes nos recettes Bébé en détails.</p>
+							<a href="#">
+								<button type="button" class="btn btn-outline-success">voir les recettes
+								</button>
+							</a>
+						</div>
+					</div>
+				</div>
+                <div class="col card-recette">
+					<div class="card border-success shadow">
+						<img src="{{asset('images/Jus_bio.jpg')}}" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h4 class="card-title text-success">jus nature
+							</h4>
+							<p class="card-text">Découvrir toutes nos jus nature en détails..</p>
+							<a href="#">
+								<button type="button" class="btn btn-outline-success">voir les recettes
+								</button>
+							</a>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</main>
+{% endblock %}

@@ -1,0 +1,19 @@
+/* 
+html,body
+{
+    height: 100%;
+}
+body
+{
+    display: grid;
+    grid-template-rows: 1fr auto 1fr;
+} */
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+.index
+{
+    background-color: rgb(237, 236, 236);
+}
+
