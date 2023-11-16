@@ -4,10 +4,14 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'L\'email n\'est pas valide')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -15,33 +19,79 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
     
+    #[Assert\NotBlank(message:"Le nom est obligatoire")]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'Le nom ne doit pas dépasser {{ limit }} caractéres',
+    )]
+    #[Assert\Regex(
+        pattern: "/^[a-zA-Z-_' áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]+$/i",
+        match: true,
+        message: 'Veuillez entrer un nom valide.',
+    )]
     #[ORM\Column(length: 255)]
     private ?string $firstName = null;
 
+    
+    #[Assert\NotBlank(message:"Le prénom est obligatoire")]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'Le prénom ne doit pas dépasser {{ limit }} caractéres',
+    )]
+    #[Assert\Regex(
+        pattern: "/^[a-zA-Z-_' áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]+$/i",
+        match: true,
+        message: 'Veuillez entrer un prénom valide.',
+    )]
     #[ORM\Column(length: 255)]
     private ?string $lastName = null;
 
+
+    #[Assert\NotBlank(message:"e-mail obligatoire")]
+    #[Assert\Length(
+        max: 180,
+        maxMessage: 'L\'email ne doit pas dépasser {{ limit }} caractéres',
+    )]
+    #[Assert\Email( message: 'L\'e-mail  {{ value }} n\'est pas valide.' )]
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
+
     #[ORM\Column]
     private array $roles = [];
+
 
     /**
      * @var string The hashed password
      */
     #[ORM\Column]
+    #[Assert\NotBlank(message:"Le mot de passe  est obligatoire")]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'Le mot de passe ne doit pas dépasser {{ limit }} caractéres',
+    )]
+    #[Assert\Regex(
+        pattern: "/^(?=.*[a-zà-ÿ])(?=.*[A-ZÀ-Ỳ])(?=.*[0-9])(?=.*[^a-zà-ÿA-ZÀ-Ỳ0-9]).{11,255}$/",
+        match: true,
+        message: "Le mot de passe doit contentir au moins une lettre miniscule, majuscule, un chiffre et un caractère spécial.",
+    )]
+    #[Assert\NotCompromisedPassword(message:'Votre mot de passe est faible ')]
     private ?string $password = null;
 
 
     #[ORM\Column(nullable: true)]
+    #[Gedmo\Timestampable(on: 'create')]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(nullable: true)]
+    #[Gedmo\Timestampable(on: 'update')]
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $verifiedAt = null;
+
+    #[ORM\Column(type: 'boolean')]
+    private $isVerified = false;
 
     public function getId(): ?int
     {
@@ -169,6 +219,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setVerifiedAt(?\DateTimeImmutable $verifiedAt): static
     {
         $this->verifiedAt = $verifiedAt;
+
+        return $this;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): static
+    {
+        $this->isVerified = $isVerified;
 
         return $this;
     }

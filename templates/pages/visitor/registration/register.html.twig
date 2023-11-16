@@ -1,0 +1,76 @@
+{% extends "themes/visitor/base.html.twig" %}
+
+{% block title %}
+Inscription de healthy-food
+{% endblock %}
+
+{% block description %}
+	page d'inscription
+{% endblock %}
+
+{% block keywords %}
+	inscription, healthy, recettes
+{% endblock %}
+
+{% block main %}
+
+	<div class="register rows pt-3">
+
+		<div class="col-md-6 mx-auto my-3 border bg-light p-3 rounded shadow text-success">
+
+			<h1 class="text-center text-success display-5 my-3">Créer un compte</h1>
+
+			{{form_start(registrationForm)}}
+
+			<div class="my-3">
+				<label>
+					Votre nom</label>
+                    <div class="text-danger">{{form_errors(registrationForm.firstName)}}</div>
+				{{form_widget(registrationForm.firstName,{'attr':{'class':'form-control shadow'}})}}
+			</div>
+			<div class="my-3">
+				<label>
+					Votre prenom</label>
+                    <div class="text-danger">{{form_errors(registrationForm.lastName)}}</div>
+				{{form_widget(registrationForm.lastName,{'attr':{'class':'form-control shadow'}})}}
+			</div>
+			<div class="my-3">
+				<label>
+					Votre adresse e-mail</label>
+                    <div class="text-danger">{{form_errors(registrationForm.email)}}</div>
+				{{form_widget(registrationForm.email,{'attr':{'class':'form-control shadow'}})}}
+			</div>
+			<div class="my-3">
+				<label>
+					Entrez votre mot de passe
+				</label>
+                <div class="text-danger">{{form_errors(registrationForm.password.first)}}</div>
+				{{form_widget(registrationForm.password.first,{'attr':{'class':'form-control shadow','placeholder':'Au moins 12 caractéres'}})}}
+			</div>
+			<div class="my-3">
+				<label>Entrez le mot de passe à nouveau
+				</label>
+                <div class="text-danger">{{form_errors(registrationForm.password.second)}}</div>
+				{{form_widget(registrationForm.password.second,{'attr':{'class':'form-control shadow'}})}}
+			</div>
+			<div class="my-3">
+            <div class="text-danger">{{form_errors(registrationForm.agreeTerms)}}</div>
+				{{form_widget(registrationForm.agreeTerms)}}
+				<label>Accepter les conditions d'utilisation</label>
+			</div>
+			
+			<div class="my-3">
+				<input formnovalidate type="submit" class="btn btn-success " value="Continuer">
+			</div>
+			{{form_end(registrationForm)}}
+
+		</div>
+
+	</div>
+
+{% endblock %}
+
+
+{# {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %} #}
