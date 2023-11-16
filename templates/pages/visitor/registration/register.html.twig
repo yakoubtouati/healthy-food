@@ -14,41 +14,41 @@ Inscription de healthy-food
 
 {% block main %}
 
-	<div class="register rows pt-3">
+	<div class="register rows py-3">
 
-		<div class="col-md-6 mx-auto my-3 border bg-light p-3 rounded shadow text-success">
+		<div class="col-lg-5 col-sm-8 col-md-8 mx-auto my-3 border bg-light p-3 rounded shadow text-success">
 
-			<h1 class="text-center text-success display-5 my-3">Créer un compte</h1>
+			<h2 class="text-center text-success  my-3">Créer un compte</h2>
 
 			{{form_start(registrationForm)}}
 
 			<div class="my-3">
-				<label>
+				<label for="registration_form_firstName">
 					Votre nom</label>
                     <div class="text-danger">{{form_errors(registrationForm.firstName)}}</div>
 				{{form_widget(registrationForm.firstName,{'attr':{'class':'form-control shadow'}})}}
 			</div>
 			<div class="my-3">
-				<label>
+				<label for="registration_form_lastName">
 					Votre prenom</label>
                     <div class="text-danger">{{form_errors(registrationForm.lastName)}}</div>
 				{{form_widget(registrationForm.lastName,{'attr':{'class':'form-control shadow'}})}}
 			</div>
 			<div class="my-3">
-				<label>
+				<label for="registration_form_email">
 					Votre adresse e-mail</label>
                     <div class="text-danger">{{form_errors(registrationForm.email)}}</div>
 				{{form_widget(registrationForm.email,{'attr':{'class':'form-control shadow'}})}}
 			</div>
 			<div class="my-3">
-				<label>
+				<label for="registration_form_password_first">
 					Entrez votre mot de passe
 				</label>
                 <div class="text-danger">{{form_errors(registrationForm.password.first)}}</div>
 				{{form_widget(registrationForm.password.first,{'attr':{'class':'form-control shadow','placeholder':'Au moins 12 caractéres'}})}}
 			</div>
 			<div class="my-3">
-				<label>Entrez le mot de passe à nouveau
+				<label for="registration_form_password_second">Entrez le mot de passe à nouveau
 				</label>
                 <div class="text-danger">{{form_errors(registrationForm.password.second)}}</div>
 				{{form_widget(registrationForm.password.second,{'attr':{'class':'form-control shadow'}})}}

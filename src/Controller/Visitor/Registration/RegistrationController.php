@@ -58,7 +58,7 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('visitor.registration.verify_email.waiting');
         }
 
-        return $this->render('pages/visitor/registration/register.html.twig', [
+        return $this->render('pages/visitor/registration/register.html.twig',[
             'registrationForm' => $form->createView(),
         ]);
     }

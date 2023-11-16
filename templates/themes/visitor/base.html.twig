@@ -77,12 +77,25 @@
 						</li>
 					</ul>
 					<ul class="navbar-nav ms-auto">
+
+					{% if app.user %}
+
 						<li class="nav-item">
-							<a class="nav-link active text-success mx-2 " aria-current="page" href="#">Connexion</a>
+							<a class="nav-link active text-danger mx-2 " aria-current="page" href="{{path('visitor.authentication.logout')}}">
+							<i class="fa-solid fa-right-from-bracket fa-xl" style="color: #ff2600;"></i>
+								{{app.user.firstName}} {{app.user.lastName}}
+							</a>
+						</li>
+					
+					{% else %}
+						
+						<li class="nav-item">
+							<a class="nav-link active text-success mx-2 " aria-current="page" href="{{path('visitor.authentication.login')}}">Connexion</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link active btn btn-success text-light mx-2 " aria-current="page" href="{{path('visitor.registration.register')}}">Inscription</a>
 						</li>
+					{% endif %}
 					</ul>
 				</div>
 			</div>
