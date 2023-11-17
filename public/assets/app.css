@@ -35,3 +35,9 @@ body
     background-position:center;
     
 }
+.reset
+{
+    background-image: url('../images/reset_password.png');
+    background-size:cover;
+    background-position:center;
+}

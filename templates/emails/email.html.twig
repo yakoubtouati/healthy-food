@@ -1,0 +1,10 @@
+<h1>Bonjour</h1>
+
+<p>Pour réinitialiser votre mot de passe, veuillez visiter le lien suivant</p>
+
+<a href="{{ url('visitor.authentication.reset_password', {token: resetToken.token}) }}">{{ url('visitor.authentication.reset_password', {token: resetToken.token}) }}</a>
+
+<p>Ce lien expirera dans 1 heure. {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+
+<p>Merci !</p>
+
