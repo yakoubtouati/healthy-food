@@ -60,17 +60,17 @@
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 								<li>
-									<a class="dropdown-item text-success" href="#">recettes salées</a>
+									<a class="dropdown-item text-success px-4" href="#">recettes salées</a>
 								</li>
 								<li>
-									<a class="dropdown-item text-success" href="#">recettes sucrés</a>
+									<a class="dropdown-item text-success px-4" href="#">recettes sucrés</a>
 								</li>
 								<li>
-									<a class="dropdown-item text-success" href="#">recettes bébé
+									<a class="dropdown-item text-success px-4" href="#">recettes bébé
 									</a>
 								</li>
 								<li>
-									<a class="dropdown-item text-success" href="#">jus nature
+									<a class="dropdown-item text-success px-4" href="#">jus nature
 									</a>
 								</li>
 							</ul>
@@ -80,13 +80,38 @@
 
 					{% if app.user %}
 
-						<li class="nav-item">
-							<a class="nav-link active text-danger mx-2 " aria-current="page" href="{{path('visitor.authentication.logout')}}">
-							<i class="fa-solid fa-right-from-bracket fa-xl" style="color: #ff2600;"></i>
-								 {{app.user.firstName}} {{app.user.lastName}}
+						{% if is_granted('ROLE_ADMIN') %}
+
+							<li class="nav-item dropdown mx-3">
+							<a class="nav-link dropdown-toggle text-success"  id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<i class="fa-solid fa-power-off fa-lg" style="color: green;"></i>
+								{{app.user.firstName}} {{app.user.lastName}} 
 							</a>
-						</li>
-					
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<li>
+									<a class="dropdown-item text-success" href="{{path('admin.home.index')}}">Espace Admin</a>
+								</li>
+								<li>
+									<a class="dropdown-item text-danger" href="{{path('visitor.authentication.logout')}}"><i class="fa-solid fa-right-from-bracket fa-md" style="color: #ff2600;"></i>Déconnexion </a>
+								</li>
+							</ul>
+						{% else %}
+
+							<li class="nav-item dropdown mx-5">
+							<a class="nav-link dropdown-toggle text-success"  id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="fa-solid fa-power-off fa-lg" style="color: green;"></i>
+								{{app.user.firstName}} {{app.user.lastName}} 
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								<li>
+									<a class="dropdown-item text-success" href="#">Mon Profil</a>
+								</li>
+								<li>
+									<a class="dropdown-item text-danger" href="{{path('visitor.authentication.logout')}}"><i class="fa-solid fa-right-from-bracket fa-lg mr-3" style="color: #ff2600;"></i>Déconnexion </a>
+								</li>
+							</ul>
+						{% endif %}
+							
 					{% else %}
 						
 						<li class="nav-item">
@@ -110,7 +135,7 @@
 		<footer class="bg-success text-light p-3">
 			<div class="d-flex justify-content-around align-items-center">
 				<div>
-					<h4>a propos</h4>
+					<h4>A propos</h4>
 					<p>Le site healthy-food
 						<br>
 						vous propose
@@ -119,7 +144,7 @@
 					</p>
 				</div>
 				<div>
-					<h4>contactez nous</h4>
+					<h4>Contactez nous</h4>
 					<p>
 						Email:healthy-food@gmail.com
 						<br>
@@ -128,7 +153,7 @@
 
 				</div>
 				<div>
-					<h4>suivez-nous</h4>
+					<h4>Suivez-nous</h4>
 					<div class="d-flex flex-column gap-2 justify-content-around align-items-center">
 						<a target="_blank" href="https://twitter.com">
 							<i class="fa-brands fa-twitter" style="color: #ffffff;"></i>
