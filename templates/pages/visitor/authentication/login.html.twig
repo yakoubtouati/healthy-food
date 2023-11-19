@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block main %}
-   
+
 	<div class="register rows pt-3">
 
 		<div class="col-lg-5 col-sm-8 col-md-8  mx-auto my-3 border bg-light p-3 rounded shadow text-success">
@@ -23,8 +23,11 @@
 
 			{% for message in app.flashes('success') %}
 
-			{{message}}
-				
+				<div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+					{{message}}
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+
 			{% endfor %}
 
 			<form method="POST">
@@ -60,18 +63,19 @@
 
 			</form>
 
-				<div class="mt-4">
-                    <hr>
-					<p class="text-secondary text-center">
-						Nouveau chez Healthy-food ?
-					</p>
-                    <a href="{{path('visitor.registration.register')}}" class="text-decoration-none ">
+			<div class="mt-4">
+				<hr>
+				<p class="text-secondary text-center">
+					Nouveau chez Healthy-food ?
+				</p>
+				<a href="{{path('visitor.registration.register')}}" class="text-decoration-none ">
 					<div class="row">
-                      <button class="col-7 mx-auto  text-success">créer un compte </button>
+						<button class="col-7 mx-auto  text-success">créer un compte
+						</button>
 					</div>
-                    </a>
-				</div>
+				</a>
+			</div>
 		</div>
 	</div>
-    
+
 {% endblock %}
