@@ -45,7 +45,7 @@
 
 		{# stylesheet template dashboard #}
 		<style>
-
+			
 			.bi {
 				display: inline-block;
 				width: 1rem;
@@ -144,7 +144,7 @@
 		
 		{# navbar #}
 
-		<header class="navbar sticky-top bg-light flex-md-nowrap p-0 " data-bs-theme="dark"> <a href="{{path('admin.home.index')}}" class="mx-4 p-3"><img src="{{asset('images/logo.png')}}" width="auto" height="80px"></a>
+		<header class="navbar sticky-top bg-light flex-md-nowrap p-0 " data-bs-theme="dark"> <a href="{{path('admin.home.index')}}" class="mx-4 p-3"><img src="{{asset('images/logo.png')}}" title="logo" alt="un bol healthy" width="auto" height="80px"></a>
 			<ul class="navbar-nav flex-row d-md-none">
 				<li class="nav-item text-nowrap">
 					<button class="nav-link px-3 text-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -169,20 +169,20 @@
 							<ul class="nav flex-column text-light py-4">
 								<li class="nav-item">
 									<a class="nav-link d-flex align-items-center gap-3 active text-light" aria-current="page" href="">
-										<i class="fa-solid fa-house"></i>
+										<i class="fa-solid fa-house-chimney" style="color: #ffffff;"></i>
 										Tableau de bord
 									</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link d-flex align-items-center gap-3 text-light" href="">
-										<i class="fa-solid fa-folder"></i>
-										Catégories
+										<i class="fa-regular fa-folder-open" style="color: #ffffff;"></i>
+										Catégories des recettes
 									</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link d-flex align-items-center gap-3 text-light" href="">
-										<i class="fa-solid fa-feather-pointed"></i>
-										Articles
+										<i class="fa-solid fa-file" style="color: #ffffff;"></i>
+										Les recettes 
 									</a>
 								</li>
 								<li class="nav-item">
