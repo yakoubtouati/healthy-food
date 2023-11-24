@@ -1,0 +1,59 @@
+
+{% extends "themes/admin/base.html.twig" %}
+
+{% block title %} nouvelle recette{% endblock %}
+
+{% block tinyMCE %}
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+  tinymce.init({
+    selector: 'textarea#recipes_form_content'
+  });
+</script>
+{% endblock %}
+
+{% block main %}
+    <div class="container row h-100 recipes">
+
+        <div class="col-lg-9 mx-auto ">
+            <div class="border bg-light p-3 rounded shadow my-5">
+
+            <h1 class="text-center text-success display-5 my-3"> Nouvelle recette </h1>
+
+            {{form_start(formRecipes)}}
+
+                <div class="my-3">
+                    <label for="recipes_form_title" class="text-success">Titre</label>
+                    <div class="text-danger">{{form_errors(formRecipes.title)}}</div>
+                    {{form_widget(formRecipes.title,{'attr':{'class':'form-control','autofocus':'autofocus'}})}}
+                </div>
+                <div class="my-3">
+                    <label for="recipes_form_category" class="text-success">Catégorie </label>
+                    <div class="text-danger">{{form_errors(formRecipes.category)}}</div>
+                    {{form_widget(formRecipes.category,{'attr':{'class':'form-control','placeholder':'Choissiez une catégorie'}})}}
+                </div>
+                <div class="my-3">
+                    <label for="recipes_form_imageFile_file" class="text-success">Image </label>
+                    <div class="text-danger">{{form_errors(formRecipes.imageFile)}}</div>
+                    {{form_widget(formRecipes.imageFile,{'attr':{'class':'form-control'}})}}
+                </div>
+                <div class="my-3">
+                    <label for="recipes_form_content" class="text-success">Le contenu</label>
+                    <div class="text-danger">{{form_errors(formRecipes.content)}}</div>
+                    {{form_widget(formRecipes.content,{'attr':{'class':'form-control'}})}}
+                </div>
+                <div class="my-3">
+                    <input formnovalidate type="submit" class="btn btn-success" value="Créer">
+                </div>
+            {{form_end(formRecipes)}}
+        
+        </div>
+    
+    
+         </div>
+    
+    </div>
+
+
+
+{% endblock %}
