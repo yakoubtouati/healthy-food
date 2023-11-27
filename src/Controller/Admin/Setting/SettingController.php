@@ -36,12 +36,11 @@ class SettingController extends AbstractController
         {
             $em->persist($setting);
             $em->flush();
-            $this->addFlash('success','Les modification ont été fait avec success');
+            $this->addFlash('success','Les modifications ont été fait avec success');
             return $this->redirectToRoute('admin.setting.index');
         }
 
-        
-
+    
         return $this->render('pages/admin/setting/edit.html.twig',[
             "settingForm"=>$settingForm->createView()
         ]);
