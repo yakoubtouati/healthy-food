@@ -1,0 +1,46 @@
+
+{% extends 'themes/admin/base.html.twig' %}
+
+{% block title %}
+    Modifier les utilisateurs     
+{% endblock %}
+
+{% block jquerry %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
+
+{% block salect2 %}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+   $(document).ready(function() {
+    $('#user_form_roles').select2();
+    });
+</script>
+{% endblock %}
+
+{% block main %}
+
+    
+
+    <div class="row container my-3 roles mx-auto ">
+
+        <div class="col-lg-10 col-sm-12  mt-5 mx-auto border shadow rounded">
+            <h2 class="text-success text-center  my-4">Modifier les roles de {{user.firstName}} {{user.lastName}}</h2>
+
+            {{form_start(rolesForm)}}
+            <div class="my-2">
+                <label class="my-2" for="user_form_roles"></label>
+                <div class="text-danger">{{form_errors(rolesForm.roles)}}</div>
+                {{ form_widget(rolesForm.roles,{'attr':{'class':'fs-4 d-flex gap-3 justify-content-center align-items-center'}}) }}
+            </div>
+            <div class="my-5 d-flex justify-content-center ">
+                <input type="submit" value="Modifier" class="btn btn-success ">
+            </div>
+            {{form_end(rolesForm)}}
+        </div>
+    
+    </div>
+
+{% endblock %}
+

@@ -10,6 +10,7 @@
 			{% block title %}{% endblock %}
 		</title>
 
+
 		{# OFF SEO #}
 		<meta
 		name="robots" content="noindex, nofollow">
@@ -98,26 +99,22 @@
 		{% block tinyMCE %}{% endblock %}
 
 		{# jquerry #}
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		{% block jquerry %}
+		
+		{% endblock %}
 
 		{# dataTables #}
-		<link href="https://cdn.datatables.net/v/bs5/dt-1.13.8/datatables.min.css" rel="stylesheet">
-		<script src="https://cdn.datatables.net/v/bs5/dt-1.13.8/datatables.min.js"></script>
-		<script>
-		$(document).ready( function () {
-   		 $('#myTable').DataTable({
-     	"language": {
-         "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
-     	}
- 		});
-	} );
+			{% block dataTables %}
 		
-		</script>		
+			{% endblock %}
+
+
+	
  
 
 
 	</head>
-	<body>
+	<body class="h-100">
 
 		<header class="navbar sticky-top bg-light flex-md-nowrap p-0 " data-bs-theme="dark">
 			<a href="{{path('admin.home.index')}}" class="mx-4 p-3"><img src="{{asset('images/logo.png')}}" title="logo" alt="un bol healthy" width="auto" height="80px"></a>
@@ -136,51 +133,53 @@
 				class="row">
 
 				{# Sidebar #}
-				<div class="sidebar  col-md-3 col-lg-2 p-0 bg-body-tertiary">
-					<div class="offcanvas-md offcanvas-end bg-success" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+				<div class="sidebar  col-md-3 col-lg-2 p-0 bg-body-tertiary ">
+					<div class="offcanvas-md offcanvas-end bg-success h-100" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
 						<div class="offcanvas-header">
 							<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
 						</div>
-						<div class="offcanvas-body d-md-flex flex-column p-2 py-4 pt-lg-3 overflow-y-auto">
-							<ul class="nav flex-column text-light py-4">
-								<li class="nav-item">
-									<a class="nav-link d-flex align-items-center gap-3 active text-light" aria-current="page" href="">
+						<div class="offcanvas-body d-md-flex flex-column p-2  pt-lg-3 overflow-y-auto">
+							<ul class="nav flex-column text-light py-4 mt-4">
+
+								<li class="nav-item mb-4 ">
+									<a class=" fs-5 nav-link d-flex align-items-center gap-3 active text-light " aria-current="page" href="">
+										<i class="fa-solid fa-user fa-md" style="color: #ffffff;"></i>
+										{{app.user.firstName}} {{app.user.lastName}} 
+									</a>
+								</li>
+								<li class="nav-item ">
+									<a class="nav-link d-flex align-items-center gap-3 active text-light " aria-current="page" href="">
 										<i class="fa-solid fa-house-chimney" style="color: #ffffff;"></i>
-										Tableau de bord
+										Tableau de board
 									</a>
 								</li>
+								
 								<li class="nav-item">
-									<a class="nav-link d-flex align-items-center gap-3 text-light" href="">
-										<i class="fa-regular fa-folder-open" style="color: #ffffff;"></i>
-										Catégories des recettes
-									</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link d-flex align-items-center gap-3 text-light" href="{{path('admin.recipes.index')}}">
-										<i class="fa-solid fa-file" style="color: #ffffff;"></i>
+									<a class=" nav-link d-flex align-items-center gap-3 text-light" href="{{path('admin.recipes.index')}}">
+										<i class="fa-solid fa-utensils" style="color: #ffffff;"></i>
 										Les recettes
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link d-flex align-items-center gap-3 text-light" href="">
+									<a class="  nav-link d-flex align-items-center gap-3 text-light" href="">
 										<i class="fa-solid fa-hashtag"></i>
 										Tags
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link d-flex align-items-center gap-3 text-light" href="">
+									<a class=" nav-link d-flex align-items-center gap-3 text-light" href="">
 										<i class="fa-regular fa-address-book"></i>
 										Contacts
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link d-flex align-items-center gap-3 text-light" href="">
+									<a class=" nav-link d-flex align-items-center gap-3 text-light" href="{{path('admin.user.index')}}">
 										<i class="fa-solid fa-users"></i>
 										Utilisateurs
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link d-flex align-items-center gap-3 text-light" href="">
+									<a class=" nav-link d-flex align-items-center gap-3 text-light px-2" href="">
 										<i class="fa-solid fa-comment"></i>
 										Commentaires
 									</a>
@@ -191,31 +190,31 @@
 
 							<ul class="nav flex-column mb-auto py-4">
 								<li class="nav-item">
-									<a class="nav-link d-flex align-items-center gap-3 text-light" href="">
+									<a class=" nav-link d-flex align-items-center gap-3 text-light" href="">
 										<i class="fa-solid fa-user"></i>
 										Mon profil
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link d-flex align-items-center gap-3 text-light" href="">
+									<a class=" nav-link d-flex align-items-center gap-3 text-light" href="">
 										<i class="fa-solid fa-gear"></i>
 										Paramètres
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link d-flex align-items-center gap-3 text-light" href="">
+									<a class=" nav-link d-flex align-items-center gap-3 text-light" href="">
 										<i class="fa-solid fa-outdent"></i>
 										Espace utilisateur
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link d-flex align-items-center gap-3 text-light" href="{{path('visitor.welcome.index')}}">
+									<a class=" nav-link d-flex align-items-center gap-3 text-light" href="{{path('visitor.welcome.index')}}">
 										<i class="fa-solid fa-rotate-left"></i>
 										Retour au site
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link d-flex align-items-center gap-3 text-light" href="{{path('visitor.authentication.logout')}}">
+									<a class=" nav-link d-flex align-items-center gap-3 text-light" href="{{path('visitor.authentication.logout')}}">
 										<i class="fa-solid fa-right-from-bracket"></i>
 										Déconnexion
 									</a>
@@ -226,7 +225,8 @@
 				</div>
 
 				{# Le contenu spécifique à chaque page. #}
-				<main class="col-md-9 ms-sm-auto col-lg-10 p-0"> {% block main %}{% endblock %}
+				<main class="col-md-9 ms-sm-auto  col-lg-10 p-0 ">
+				 {% block main %}{% endblock %}
 					</main>
 				</div>
 
