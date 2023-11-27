@@ -1,0 +1,46 @@
+{% extends 'themes/admin/base.html.twig' %}
+
+{% block title %}Modifier les paramétres de healthy-food{% endblock %}
+
+{% block css %}
+<style>
+.setting
+{
+    background-image: url('{{asset('/images/setting.jpg')}}');
+    background-size:cover;
+    background-position:center;
+}
+</style>
+{% endblock %}
+
+{% block main %}
+
+    <div class="setting h-100">
+        <div class="container row py-5">
+            <div class="col-8 bg-light mx-auto bordered shadow rounded my-5 py-4">
+                <h3 class="text-success text-center ">Modifier les paramétres de Healthy-food</h3>
+                {{ form_start(settingForm) }}
+                    <div class="my-3">
+                    <label class="text-success">Email</label>
+                    <div class="text-danger">{{ form_errors(settingForm.email) }}</div>
+                    {{ form_widget(settingForm.email,{'attr':{'class':'form-control  shadow'}}) }}
+                    </div>
+                    <div class="my-3">
+                    <label class="text-success">Numero de téléphone</label>
+                    <div class="text-danger">{{ form_errors(settingForm.phone) }}</div>
+                    {{ form_widget(settingForm.phone,{'attr':{'class':'form-control shadow'}}) }}
+                    </div>
+                    <div class="my-4">
+                    <input formnovalidate type="submit" value="modifier" class="btn btn-success">
+                    </div>
+
+                {{ form_end(settingForm) }}
+
+            </div>
+
+        </div>
+    </div>
+
+   
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'themes/admin/base.html.twig' %}
+
+{% block title %} Les paramétres de healthy-food{% endblock %}
+
+{% block main %}
+
+    
+
+    <div class="container my-5 py-5">
+        {% for message in app.flashes('success') %}
+		
+	        <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+  		        {{message}}
+  		         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	        </div>
+        {% endfor %}
+        <div class="col-10 mx-auto table-responsive my-5">
+
+            <table class="table table-striped table-bordered table-hover my-3">
+                
+                    <tr class="table-success" >
+                        <th class="py-4 text-center">Email</th>
+                        <th class="py-4 text-center">Numero de telephone</th>
+                        <th class="py-4 text-center">Options</th>
+
+                    </tr>   
+            
+                    <tr>
+                        <td class="py-4 text-center"> {{setting.email}}</td>
+                        <td class="py-4 text-center"> {{setting.phone}}</td>
+                        <td class="py-4 text-center"> <a class="btn btn-success" href="{{path('admin.setting.edit',{'id':setting.id})}}"> Modifier </a></td>
+                    </tr>
+                
+            
+            </table>
+
+          
+        
+        </div>
+    
+    </div>
+
+{% endblock %}
