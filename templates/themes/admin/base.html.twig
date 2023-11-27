@@ -108,7 +108,9 @@
 		
 			{% endblock %}
 
+		{# css #}
 
+			{% block css %}{% endblock %}
 	
  
 
@@ -142,44 +144,44 @@
 							<ul class="nav flex-column text-light py-4 mt-4">
 
 								<li class="nav-item mb-4 ">
-									<a class=" fs-5 nav-link d-flex align-items-center gap-3 active text-light " aria-current="page" href="">
+									<a class=" px-2 fs-5 nav-link d-flex align-items-center gap-3 active text-light " aria-current="page" href="">
 										<i class="fa-solid fa-user fa-md" style="color: #ffffff;"></i>
 										{{app.user.firstName}} {{app.user.lastName}} 
 									</a>
 								</li>
 								<li class="nav-item ">
-									<a class="nav-link d-flex align-items-center gap-3 active text-light " aria-current="page" href="">
+									<a class=" px-2 nav-link d-flex align-items-center gap-3 active text-light " aria-current="page" href="">
 										<i class="fa-solid fa-house-chimney" style="color: #ffffff;"></i>
 										Tableau de board
 									</a>
 								</li>
 								
 								<li class="nav-item">
-									<a class=" nav-link d-flex align-items-center gap-3 text-light" href="{{path('admin.recipes.index')}}">
+									<a class=" px-2 nav-link d-flex align-items-center gap-3 text-light" href="{{path('admin.recipes.index')}}">
 										<i class="fa-solid fa-utensils" style="color: #ffffff;"></i>
 										Les recettes
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class="  nav-link d-flex align-items-center gap-3 text-light" href="">
+									<a class=" px-2  nav-link d-flex align-items-center gap-3 text-light" href="">
 										<i class="fa-solid fa-hashtag"></i>
 										Tags
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class=" nav-link d-flex align-items-center gap-3 text-light" href="">
+									<a class=" px-2 nav-link d-flex align-items-center gap-3 text-light" href="">
 										<i class="fa-regular fa-address-book"></i>
 										Contacts
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class=" nav-link d-flex align-items-center gap-3 text-light" href="{{path('admin.user.index')}}">
+									<a class=" px-2 nav-link d-flex align-items-center gap-3 text-light" href="{{path('admin.user.index')}}">
 										<i class="fa-solid fa-users"></i>
 										Utilisateurs
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class=" nav-link d-flex align-items-center gap-3 text-light px-2" href="">
+									<a class=" px-2 nav-link d-flex align-items-center gap-3 text-light" href="">
 										<i class="fa-solid fa-comment"></i>
 										Commentaires
 									</a>
@@ -190,31 +192,31 @@
 
 							<ul class="nav flex-column mb-auto py-4">
 								<li class="nav-item">
-									<a class=" nav-link d-flex align-items-center gap-3 text-light" href="">
+									<a class=" px-2 nav-link d-flex align-items-center gap-3 text-light" href="">
 										<i class="fa-solid fa-user"></i>
 										Mon profil
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class=" nav-link d-flex align-items-center gap-3 text-light" href="">
+									<a class=" px-2 nav-link d-flex align-items-center gap-3 text-light" href="{{path('admin.setting.index')}}">
 										<i class="fa-solid fa-gear"></i>
 										Paramètres
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class=" nav-link d-flex align-items-center gap-3 text-light" href="">
+									<a class=" px-2 nav-link d-flex align-items-center gap-3 text-light" href="">
 										<i class="fa-solid fa-outdent"></i>
 										Espace utilisateur
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class=" nav-link d-flex align-items-center gap-3 text-light" href="{{path('visitor.welcome.index')}}">
+									<a class=" px-2 nav-link d-flex align-items-center gap-3 text-light" href="{{path('visitor.welcome.index')}}">
 										<i class="fa-solid fa-rotate-left"></i>
 										Retour au site
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class=" nav-link d-flex align-items-center gap-3 text-light" href="{{path('visitor.authentication.logout')}}">
+									<a class=" px-2 nav-link d-flex align-items-center gap-3 text-light" href="{{path('visitor.authentication.logout')}}">
 										<i class="fa-solid fa-right-from-bracket"></i>
 										Déconnexion
 									</a>
