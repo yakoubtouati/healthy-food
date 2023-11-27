@@ -44,7 +44,7 @@ class RecipesController extends AbstractController
 
             $em->flush();
 
-            $this->addFlash('success','la recette "'.$recipes->getTitle().'"  a été ajoutée avec success');
+            $this->addFlash('success','La recette "'.$recipes->getTitle().'"  a été ajoutée avec success');
 
             return $this->redirectToRoute('admin.recipes.index');
 
