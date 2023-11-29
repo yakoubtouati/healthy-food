@@ -24,11 +24,13 @@ class SettingController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/setting/{id}/edit', name: 'admin.setting.edit',methods:['GET','POST'])]
+    #[Route('/admin/setting/{id}/edit', name: 'admin.setting.edit',methods:['GET','PUT'])]
     public function edit(Setting $setting,Request $request,EntityManagerInterface $em):Response
     {
         
-        $settingForm=$this->createForm(SettingFormType::class,$setting);
+        $settingForm=$this->createForm(SettingFormType::class,$setting,[
+            'method'=>'PUT'
+        ]);
         
         $settingForm->handleRequest($request);
 

@@ -20,8 +20,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-    
-    #[Assert\NotBlank(message:"Le nom est obligatoire")]
+
+    #[Assert\NotBlank(message: "Le nom est obligatoire")]
     #[Assert\Length(
         max: 255,
         maxMessage: 'Le nom ne doit pas dépasser {{ limit }} caractéres',
@@ -34,8 +34,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $firstName = null;
 
-    
-    #[Assert\NotBlank(message:"Le prénom est obligatoire")]
+
+    #[Assert\NotBlank(message: "Le prénom est obligatoire")]
     #[Assert\Length(
         max: 255,
         maxMessage: 'Le prénom ne doit pas dépasser {{ limit }} caractéres',
@@ -49,12 +49,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $lastName = null;
 
 
-    #[Assert\NotBlank(message:"e-mail obligatoire")]
+    #[Assert\NotBlank(message: "e-mail obligatoire")]
     #[Assert\Length(
         max: 180,
         maxMessage: 'L\'email ne doit pas dépasser {{ limit }} caractéres',
     )]
-    #[Assert\Email( message: 'L\'e-mail  {{ value }} n\'est pas valide.' )]
+    #[Assert\Email(message: 'L\'e-mail  {{ value }} n\'est pas valide.')]
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
@@ -67,7 +67,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
-    #[Assert\NotBlank(message:"Le mot de passe  est obligatoire")]
+    #[Assert\NotBlank(message: "Le mot de passe  est obligatoire")]
     #[Assert\Length(
         max: 255,
         maxMessage: 'Le mot de passe ne doit pas dépasser {{ limit }} caractéres',
@@ -77,7 +77,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         match: true,
         message: "Le mot de passe doit contentir au moins une lettre miniscule, majuscule, un chiffre et un caractère spécial.",
     )]
-    #[Assert\NotCompromisedPassword(message:'Votre mot de passe est faible ')]
+    #[Assert\NotCompromisedPassword(message: 'Votre mot de passe est faible ')]
     private ?string $password = null;
 
 
@@ -113,7 +113,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->email;
     }
 
-    public function setEmail(string $email): static
+    public function setEmail(?string $email): static
     {
         $this->email = $email;
 
@@ -157,7 +157,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->password;
     }
 
-    public function setPassword(string $password): static
+    public function setPassword(?string $password): static
     {
         $this->password = $password;
 
@@ -178,7 +178,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->firstName;
     }
 
-    public function setFirstName(string $firstName): static
+    public function setFirstName(?string $firstName): static
     {
         $this->firstName = $firstName;
 
@@ -190,7 +190,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->lastName;
     }
 
-    public function setLastName(string $lastName): static
+    public function setLastName(?string $lastName): static
     {
         $this->lastName = $lastName;
 
