@@ -1,0 +1,55 @@
+{% extends "themes/admin/base.html.twig" %}
+
+{% block title %}Modifier le profil de
+	{{app.user.firstName}}
+	{{app.user.lastName}}
+{% endblock %}
+
+{% block css %}
+	<style>
+        .profile
+        {
+            background-image: url('{{asset('/images/profile.jpg')}}');
+            background-size:cover;
+            background-position:center;
+        }
+    </style>
+{% endblock %}
+
+{% block main %}
+<div class="h-100 profile">
+	<div class="container row py-1">
+		<div class="col-lg-8 mx-auto border bg-light p-3 rounded shadow my-5">
+
+			<h1 class="text-center text-success display-5 my-3">
+				Modifier vos cordonnées
+			</h1>
+
+			{{form_start(profileForm)}}
+
+			<div class="my-3">
+				<label for="recipes_form_title" class="text-success">Prénom</label>
+				<div class="text-danger">{{form_errors(profileForm.firstName)}}</div>
+				{{form_widget(profileForm.firstName,{'attr':{'class':'form-control','autofocus':'autofocus'}})}}
+			</div>
+			<div class="my-3">
+				<label for="recipes_form_category" class="text-success">Nom
+				</label>
+				<div class="text-danger">{{form_errors(profileForm.lastName)}}</div>
+				{{form_widget(profileForm.lastName,{'attr':{'class':'form-control','placeholder':'Choissiez une catégorie'}})}}
+			</div>
+
+			<div class="my-3">
+				<label for="recipes_form_content" class="text-success">E-mail</label>
+				<div class="text-danger">{{form_errors(profileForm.email)}}</div>
+				{{form_widget(profileForm.email,{'attr':{'class':'form-control'}})}}
+			</div>
+			<div class="my-4">
+				<input formnovalidate type="submit" class="btn btn-success" value="Modifier">
+			</div>
+			{{form_end(profileForm)}}
+
+		</div>
+    </div>
+</div>    
+{% endblock %}
