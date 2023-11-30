@@ -1,0 +1,81 @@
+{% extends 'themes/visitor/base.html.twig' %}
+
+{% block title %} contactez-nous{% endblock %}
+
+{% block description %} contactez le site healthy-food {% endblock %}
+
+{% block keywords %} contact, healthy, recettes{% endblock %}
+
+{% block css %}
+    <style>
+        .contact
+        {
+            background-image: url('{{asset('/images/contact.jpg')}}');
+            background-size:cover;
+            background-position:center;
+        }
+    </style>
+{% endblock %}
+
+{% block main %}
+
+    <div class="contact h-100 p-3">
+
+        <div class="row">
+
+            <div class=" col-8 mx-auto bordered rounded bg-light shadow my-4 p-3">
+                
+                <h1 class="text-center text-success display-5 my-3"> Contactez-nous</h1>
+                    
+                    {% for message in app.flashes('success') %}
+		
+	                    <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+  		                    {{message}}
+  		                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	                     </div>
+
+	                {% endfor %}
+            
+                    {{ form_start(contactForm) }}
+                        <div class="row">
+                        <div class='col-6 my-3'>
+                            <label for="contact_form_firstName" class="text-success"> Prénom</label>
+                            <div class="text-danger">{{ form_errors(contactForm.firstName) }}</div>
+                            {{ form_widget(contactForm.firstName,{'attr':{'class':'form-control shadow'}}) }}
+                        </div>
+                        <div class='col-6 my-3'>
+                            <label for="contact_form_lastName" class="text-success"> Nom</label>
+                            <div class="text-danger">{{ form_errors(contactForm.lastName) }}</div>
+                            {{ form_widget(contactForm.lastName,{'attr':{'class':'form-control shadow'}}) }}
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class='col-6 my-3'>
+                            <label for="contact_form_email" class="text-success"> Email</label>
+                            <div class="text-danger">{{ form_errors(contactForm.email) }}</div>
+                            {{ form_widget(contactForm.email,{'attr':{'class':'form-control shadow'}}) }}
+                        </div>
+                        <div class='col-6 my-3'>
+                            <label for="contact_form_phone" class="text-success"> Numéro de téléphone</label>
+                            <div class="text-danger">{{ form_errors(contactForm.phone) }}</div>
+                            {{ form_widget(contactForm.phone,{'attr':{'class':'form-control shadow'}}) }}
+                        </div>
+                        </div>
+                        <div class='my-3'>
+                            <label for="contact_form_content" class="text-success"> Message</label>
+                            <div class="text-danger">{{ form_errors(contactForm.content) }}</div>
+                            {{ form_widget(contactForm.content,{'attr':{'class':'form-control shadow'}}) }}
+                        </div>
+                        <div class=" my-4">
+                            <input formnovalidate type="submit" value="Envoyer" class="btn btn-lg btn-success">
+                        </div>
+
+                    {{ form_end(contactForm) }}
+            
+            </div>        
+        </div>
+    
+    </div>
+
+
+{% endblock %}

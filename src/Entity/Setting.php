@@ -30,7 +30,7 @@ class Setting
     #[Assert\Regex(
         pattern:"/^[0-9]*$/",
         match: true,
-        message: 'Veuillez entrer un nom valide.',
+        message: 'Veuillez entrer un numéro de téléphone valide.',
     )]
     private ?string $phone = null;
 
