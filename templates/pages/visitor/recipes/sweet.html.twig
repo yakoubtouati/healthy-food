@@ -4,16 +4,28 @@
 
 {% block description %} recette {{recipeSweet.title}} {% endblock %}
 
+{% block css %}
+<style>
+    .sweet
+    {
+    background-image: url('{{asset('/images/dashboard2.jpg')}}');
+    background-size:cover;
+    background-position:center;
+    }
+</style>
+{% endblock %}
+
 {% block main %}
 
         
-        
+    <div class="sweet">  
         <div class="container">
-    
-            <h1 class="text-center text-danger display-5 my-5">{{recipeSweet.title}}</h1>
 
-            {{recipeSweet.content|raw}}
-    
-         </div>
 
+			<h1 class="text-center text-light bg-danger display-5 my-5 p-2 ">{{recipeSweet.title}}</h1>
+            <div class="border border-danger rounded shadow p-4 my-5 bg-light">
+			    {{recipeSweet.content|raw}}
+            </div>
+		</div>
+    </div>
 {% endblock %}
