@@ -216,7 +216,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class=" px-2 nav-link d-flex align-items-center gap-3 text-light" href="{{path('visitor.authentication.logout')}}">
+									<a onclick="return confirm('voulez vous se déconnecter ?')" class=" px-2 nav-link d-flex align-items-center gap-3 text-light" href="{{path('visitor.authentication.logout')}}">
 										<i class="fa-solid fa-right-from-bracket"></i>
 										Déconnexion
 									</a>

@@ -23,7 +23,7 @@ class RecipesFormType extends AbstractType
                     'Recettes Salées' => 'recettes salées',
                     'Recettes Sucrées' => 'recettes sucrées',
                     'Recettes Bébé' => 'recettes bébé',
-                    'Jus Nature' => 'jus nature',
+                    'Jus Naturel' => 'jus naturel',
                 ],
             ])
             ->add('imageFile',VichImageType::class,[

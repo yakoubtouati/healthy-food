@@ -1,0 +1,44 @@
+{% extends "themes/visitor/base.html.twig" %}
+
+{% block title %}
+	Recettes jus natureL
+{% endblock %}
+
+{% block description %}
+	Recettes des jus natureL: Se régaler et surtout se faire plaisir sans culpabiliser !
+{% endblock %}
+
+{% block keywords %}
+	recettes, healthy, jus,sain
+{% endblock %}
+
+{% block main %}
+	
+	<h1 class="text-center bg-success text-light display-5 p-4 my-auto">Jus Naturel</h1>
+
+
+	<div class="container">
+			<div class="row">
+				{% for recipeJus in recipesJus %}
+				<div class="card my-3 col-lg-6 col-md-12 col-sm-12 border-success">
+					<div class="row g-0 h-100">
+						<div class="col-6">
+							<img class="img-fluid w-100 h-100 p-0" src="{{vich_uploader_asset(recipeJus, 'imageFile') }}" alt="{{ recipeJus.title }}">
+						</div>
+						<div class="col-6">
+							<div class="card-body">
+								<h3 class="card-title  text-center text-success  my-3">{{recipeJus.title}}</h3>
+								<p class="card-text">{{recipeJus.content|striptags|u.truncate(100,'....')|raw}}</p>
+								<p class="card-text">
+									<small class="text-body-secondary"> Publiée {{recipeJus.publishedAt|ago}}</small>
+								</p>
+								<a class="btn btn-success col-12 " href="{{path('visitor.recipes.jus_content',{'id':recipeJus.id})}}"> Lire les détails </a>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+	</div>
+  
+{% endblock %}
