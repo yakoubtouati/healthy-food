@@ -1,0 +1,19 @@
+{% extends 'themes/visitor/base.html.twig' %}
+
+{% block title %} recette {{recipeSalty.title}} {% endblock %}
+
+{% block description %} recette {{recipeSalty.title}} {% endblock %}
+
+{% block main %}
+
+        
+
+        <div class="container">
+
+         <h1 class="text-center text-success display-5 my-5">{{recipeSalty.title}}</h1>
+    
+            {{recipeSalty.content|raw}}
+    
+        </div>
+
+{% endblock %}

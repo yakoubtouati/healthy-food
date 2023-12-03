@@ -1,0 +1,46 @@
+{% extends "themes/visitor/base.html.twig" %}
+
+{% block title %}
+	Recettes Salées
+{% endblock %}
+
+{% block description %}
+	Recettes salés healthy: Se régaler et surtout se faire plaisir sans culpabiliser !
+{% endblock %}
+
+{% block keywords %}
+	recettes, healthy, salées,sain
+{% endblock %}
+
+{% block main %}
+
+
+	<h1 class="text-center text-light  bg-success display-5 p-4 my-auto">Recettes Salées</h1>
+
+
+	<div class="container">
+			<div class="row">
+				{% for recipeSalty in recipesSalty %}
+				<div class="card my-3 col-lg-6 col-md-12 col-sm-12 border-success">
+					<div class="row g-0 h-100">
+						<div class="col-6">
+							<img class="img-fluid w-100 h-100 p-0" src="{{vich_uploader_asset(recipeSalty, 'imageFile') }}" alt="{{ recipeSalty.title }}">
+						</div>
+						<div class="col-6">
+							<div class="card-body">
+								<h3 class="card-title  text-center text-success my-3">{{recipeSalty.title}}</h3>
+								<p class="card-text">{{recipeSalty.content|striptags|u.truncate(100,'....')|raw}}</p>
+								<p class="card-text">
+									<small class="text-body-secondary"> Publiée {{recipeSalty.publishedAt|ago}}</small>
+								</p>
+								<a class="btn btn-success col-12 " href="{{path('visitor.recipes.salty_content',{'id':recipeSalty.id})}}"> Lire les détails </a>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+	</div>
+
+
+{% endblock %}
