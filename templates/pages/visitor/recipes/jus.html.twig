@@ -4,16 +4,30 @@
 
 {% block description %} recette {{recipeJus.title}} {% endblock %}
 
+{% block css %}
+<style>
+    .jus
+    {
+    background-image: url('{{asset('/images/dashboard2.jpg')}}');
+    background-size:cover;
+    background-position:center;
+    }
+</style>
+{% endblock %}
+
 {% block main %}
 
-        
+<div class="jus">      
 
         <div class="container">
 
-         <h1 class="text-center text-success display-5 my-5">{{recipeJus.title}}</h1>
+         <h1 class="text-center text-light  bg-success display-5 my-5 p-2">{{recipeJus.title}}</h1>
+         <div class="border border-success rounded bg-light shadow p-4 my-5">
+			    {{recipeJus.content|raw}}
+         </div>
     
-            {{recipeJus.content|raw}}
+         
     
         </div>
-
+</div>
 {% endblock %}
