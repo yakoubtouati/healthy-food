@@ -20,11 +20,143 @@
         
     <div class="baby">
         <div class="container">
+		{% for message in app.flashes('success') %}
+
+				<div class="alert alert-success alert-dismissible fade show text-center my-3" role="alert">
+					{{message}}
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+
+			{% endfor %}
 
          <h1 class="text-center bg-warning  display-5 my-5 p-2">{{recipeBaby.title}}</h1>
          <div class="border border-warning bg-light rounded shadow p-4 my-5">
 			    {{recipeBaby.content|raw}}
          </div>
+		
+
+
+			<div class="border border-warning rounded shadow p-5 my-5 bg-light">
+
+				{% set troisPremiersElements = recipeBaby.comments|reverse|slice(0, 3) %}
+
+				<h1 class="text-center  bg-warning  display-5 my-3 p-2">
+					Les commentaires
+				</h1>
+				<div class="row">
+					<p class="text-center  my-3 fw-bold">
+						Les 3 derniers commentaires
+					</p>
+					{% for comment in troisPremiersElements %}
+
+						{% if comment.isActivated %}
+							<div class="card col-lg-4 col-sm-12 ">
+
+								<div class="card-header">
+									<p class="my-2">{{comment.user.firstName}}
+										{{comment.user.lastName}}</p>
+								</div>
+								<div class="card-body">
+									<blockquote class="blockquote mb-0">
+										<p>{{comment.content}}</p>
+										<footer class="blockquote-footer">
+											<p>Publiée le
+												{{comment.createdAt|format_date}}</p>
+										</footer>
+									</blockquote>
+								</div>
+
+							</div>
+
+						{% endif %}
+
+					{% endfor %}
+				</div>
+
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-warning my-3 mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+					Afficher tous les commentaires
+				</button>
+
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h1 class="modal-title fs-5" id="exampleModalLabel">Tous les commentaires
+								</h1>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+						
+
+									{% for comment in recipeBaby.comments|reverse %}
+
+										{% if comment.isActivated %}
+											<div class="card my-2">
+
+												<div class="card-header">
+													<p class="my-2">{{comment.user.firstName}}
+														{{comment.user.lastName}}</p>
+												</div>
+												<div class="card-body">
+													<blockquote class="blockquote mb-0">
+														<p>{{comment.content}}</p>
+														<footer class="blockquote-footer">
+															<p>Publiée le
+																{{comment.createdAt|format_date}}</p>
+														</footer>
+													</blockquote>
+												</div>
+
+											</div>
+
+										{% endif %}
+
+									{% endfor %}
+								
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-warning" data-bs-dismiss="modal">Fermer</button>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+                {% if app.user %}
+
+					{{ form_start(commentForm) }}
+
+					<label class=" mt-3 mb-1">
+						Laissez un commentaire
+					</label>
+					<div class="text-danger">
+						{{ form_errors(commentForm.content) }}</div>
+					{{ form_widget(commentForm.content,{'attr':{'class':'form-control shadow'}}) }}
+					<div>
+						<input formnovalidate type="submit" value="Envoyer" class="btn btn-warning my-3">
+					</div>
+
+					{{ form_end(commentForm) }}
+
+				{% else %}
+
+					<div>
+						<p class="text-center my-3">
+							Veuillez vous
+							<a class="btn btn-sm btn-warning" href="{{path('visitor.authentication.login')}}">connecter</a>
+							OU
+							<a class="btn btn-sm btn-warning" href=" {{path('visitor.registration.register')}}">Inscrire</a>
+							pour laissez un commentaire
+						</p>
+					</div>
+
+				{% endif %}
+			</div>
+         
+
+		
     
          
     
