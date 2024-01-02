@@ -21,8 +21,7 @@ class RecipesController extends AbstractController
         $recipes=$recipesRepository->findAll();
 
         return $this->render('pages/admin/recipes/index.html.twig',[
-            "recipes"=>$recipes
-        ]);
+            "recipes"=>$recipes  ]);   
     }
 
     #[Route('/admin/recettes/create' ,name:'admin.recipes.create',methods:['GET','POST'])]
@@ -41,18 +40,14 @@ class RecipesController extends AbstractController
             $recipes->setUser($adminPublished);
 
             $em->persist($recipes);
-
             $em->flush();
 
             $this->addFlash('success','La recette "'.$recipes->getTitle().'"  a été ajoutée avec success');
 
-            return $this->redirectToRoute('admin.recipes.index');
-
+         return $this->redirectToRoute('admin.recipes.index');
         }
-
         return $this->render('pages/admin/recipes/create.html.twig',[
-            "formRecipes"=>$formRecipes->createView()
-        ]);
+            "formRecipes"=>$formRecipes->createView() ]);    
     }
 
     #[Route('/admin/recettes/{id}/publier', name:'admin.recipes.published', methods:['PUT'])]
@@ -138,7 +133,9 @@ class RecipesController extends AbstractController
         if ($this->isCsrfTokenValid('recipes_delete_'.$recipes->getId(),$request->request->get('csrf_token')))
         {
             $em->remove($recipes);
+
             $em->flush();
+
             $this->addFlash('delete','La recette "'.$recipes->getTitle().'" a été supprimer');
 
         }
@@ -147,3 +144,7 @@ class RecipesController extends AbstractController
     }
 
 }
+
+
+
+

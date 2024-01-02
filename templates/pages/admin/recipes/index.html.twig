@@ -117,6 +117,8 @@
 						<td>
 							<div class="d-flex flex-column justify-content-center align-items-center gap-2">
 								<a href="{{path('admin.recipes.edit',{'id':recipe.id})}}" class="btn btn-sm btn-success">Modifier </a>
+
+								
 								<a onclick="return confirm('voulez vous supprimer la recette:\n {{recipe.title}} ?') && document.getElementById('form_delete_{{recipe.id}}').submit();  " class="btn btn-sm btn-danger">Supprimer</a>
 								<form method="POST" action="{{path('admin.recipes.delete',{'id':recipe.id})}}" id="form_delete_{{recipe.id}}">
 									<input type="hidden" name="_method" value="DELETE">
