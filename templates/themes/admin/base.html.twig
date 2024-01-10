@@ -144,13 +144,13 @@
 							<ul class="nav flex-column text-light py-4 mt-4">
 
 								<li class="nav-item mb-4 ">
-									<a class=" px-2 fs-5 nav-link d-flex align-items-center gap-3 active text-light " aria-current="page" href="">
+									<p class=" px-2 fs-5 nav-link d-flex align-items-center gap-3 active text-light " aria-current="page" href="">
 										<i class="fa-solid fa-user fa-md" style="color: #ffffff;"></i>
 										{{app.user.firstName}} {{app.user.lastName}} 
-									</a>
+									</p>
 								</li>
 								<li class="nav-item ">
-									<a class=" px-2 nav-link d-flex align-items-center gap-3 active text-light " aria-current="page" href="">
+									<a class=" px-2 nav-link d-flex align-items-center gap-3 active text-light " aria-current="page" href="{{path('admin.home.index')}}">
 										<i class="fa-solid fa-house-chimney" style="color: #ffffff;"></i>
 										Tableau de board
 									</a>
@@ -199,7 +199,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class=" px-2 nav-link d-flex align-items-center gap-3 text-light" href="">
+									<a class=" px-2 nav-link d-flex align-items-center gap-3 text-light" href="{{path('user.home.index')}}">
 										<i class="fa-solid fa-outdent"></i>
 										Espace utilisateur
 									</a>

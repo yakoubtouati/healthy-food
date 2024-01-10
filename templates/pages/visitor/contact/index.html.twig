@@ -23,7 +23,7 @@
 
         <div class="row">
 
-            <div class=" col-8 mx-auto bordered rounded bg-light shadow my-4 p-3">
+            <div class="col-12 col-md-8 mx-auto bordered rounded bg-light shadow my-4 p-3">
                 
                 <h1 class="text-center text-success display-5 my-3"> Contactez-nous</h1>
                     
@@ -38,24 +38,24 @@
             
                     {{ form_start(contactForm) }}
                         <div class="row">
-                        <div class='col-6 my-3'>
+                        <div class='col-12 col-md-6 my-3'>
                             <label for="contact_form_firstName" class="text-success"> Prénom</label>
                             <div class="text-danger">{{ form_errors(contactForm.firstName) }}</div>
                             {{ form_widget(contactForm.firstName,{'attr':{'class':'form-control shadow'}}) }}
                         </div>
-                        <div class='col-6 my-3'>
+                        <div class='col-12 col-md-6 my-3'>
                             <label for="contact_form_lastName" class="text-success"> Nom</label>
                             <div class="text-danger">{{ form_errors(contactForm.lastName) }}</div>
                             {{ form_widget(contactForm.lastName,{'attr':{'class':'form-control shadow'}}) }}
                         </div>
                         </div>
                         <div class="row">
-                        <div class='col-6 my-3'>
+                        <div class='col-12 col-md-6 my-3'>
                             <label for="contact_form_email" class="text-success"> Email</label>
                             <div class="text-danger">{{ form_errors(contactForm.email) }}</div>
                             {{ form_widget(contactForm.email,{'attr':{'class':'form-control shadow'}}) }}
                         </div>
-                        <div class='col-6 my-3'>
+                        <div class='col-12 col-md-6 my-3'>
                             <label for="contact_form_phone" class="text-success"> Numéro de téléphone</label>
                             <div class="text-danger">{{ form_errors(contactForm.phone) }}</div>
                             {{ form_widget(contactForm.phone,{'attr':{'class':'form-control shadow'}}) }}

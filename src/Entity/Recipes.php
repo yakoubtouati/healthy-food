@@ -22,9 +22,12 @@ class Recipes
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
+    
     #[ORM\ManyToOne(inversedBy: 'recipes')]
     private ?User $user = null;
+    
+    #[ORM\OneToMany(mappedBy: 'recipes', targetEntity: Comment::class, orphanRemoval:true)]
+    private Collection $comments;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message:"Le titre est obligatoire")]
@@ -45,10 +48,10 @@ class Recipes
 
     #[Vich\UploadableField(mapping: 'images_recipes', fileNameProperty: 'image')]
     #[Assert\File(
-        maxSize: '3072k',
+        maxSize: '2048k',
         extensions: ['png','jpg','jpeg','webp'],
         extensionsMessage: 'Veuillez insérer une image en format: Png, jpg, jpeg ou webp',
-        maxSizeMessage:" La taille de limage ne doit pas dépasser 3 Mo",
+        maxSizeMessage:" La taille de limage ne doit pas dépasser 2 Mo",
     )]
     private ?File $imageFile = null;
 
@@ -80,8 +83,6 @@ class Recipes
     #[ORM\Column]
     private ?bool $isPublished = null;
 
-    #[ORM\OneToMany(mappedBy: 'recipes', targetEntity: Comment::class)]
-    private Collection $comments;
 
     public function getId(): ?int
     {

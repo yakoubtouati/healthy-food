@@ -1,0 +1,53 @@
+{% extends 'themes/user/base.html.twig' %}
+
+{% block title %}
+	profil de
+	{{app.user.firstName}}
+	{{app.user.lastName}}
+{% endblock %}
+
+{% block main %}
+	<h1 class="text-light text-center display-5 bg-success py-2 m-0">
+		{{app.user.lastName}}
+		{{app.user.firstName}}
+    </h1>
+		
+        <div class="row bg-body-secondary p-5">
+			{% for message in app.flashes('success') %}
+
+				<div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+					{{message}}
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+
+			{% endfor %}
+
+			<div class="col-md-7 p-5 bordered bg-light rounded shadow  mx-auto ">
+				<div>
+					<h4 class="mb-5 text-success text-center ">Vos cordonnées personnelles</h4>
+					<p class="fs-5">
+						<span class="text-success">Prénom :</span>
+						{{app.user.firstName}}</p>
+					<p class="fs-5">
+						<span class="text-success">Nom :</span>
+						{{app.user.lastName}}</p>
+					<p class="fs-5">
+						<span class="text-success">E-mail :</span>
+						{{app.user.email}}</p>
+				</div>
+				<div class="text-center">
+					<a class=" m-1 btn btn-success" href='{{path('user.home.edit')}}'>Modifier les cordonnées</a>
+					<a class="btn btn-warning" href="{{path('user.home.edit.password')}}">Modifier le mot de passe</a>
+					{% if "ROLE_SUPER_ADMIN"  not in app.user.roles %}
+						<a onclick="return confirm('voulez vous supprimez le compte ?') && document.getElementById('delete_user').submit()" class="btn btn-danger"> Supprimer le compte </a>
+						<form method="POST" action="{{path('user.home.delete')}}" id="delete_user">
+							<input type="hidden" name="csrf_token" value="{{csrf_token('delete_user')}}">
+							<input  type="hidden" name="_method" value="DELETE">
+						</form>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+
+
+{% endblock %}

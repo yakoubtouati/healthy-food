@@ -18,14 +18,14 @@
 
 
 	<div class="container">
-			<div class="row">
+			<div class="row px-3">
 				{% for recipeBaby in recipesBaby %}
 				<div class="card my-3 col-lg-6 col-md-12 col-sm-12 border-warning">
 					<div class="row g-0 h-100">
-						<div class="col-6">
-							<img class="img-fluid w-100 h-100 p-0" src="{{vich_uploader_asset(recipeBaby, 'imageFile') }}" alt="{{ recipeBaby.title }}">
+						<div class="col-12 col-md-6">
+							<img class="img-fluid w-100 h-80 mt-4 rounded" src="{{vich_uploader_asset(recipeBaby, 'imageFile') }}" alt="{{ recipeBaby.title }}">
 						</div>
-						<div class="col-6">
+						<div class="col-12 col-md-6">
 							<div class="card-body">
 								<h3 class="card-title  text-center  my-3">{{recipeBaby.title}}</h3>
 								<p class="card-text">{{recipeBaby.content|striptags|u.truncate(100,'....')|raw}}</p>
