@@ -127,7 +127,7 @@ class RecipesController extends AbstractController
         
     }
 
-    #[Route('/admin/recettes/{id}/delete', name:'admin.recipes.delete', methods:['GET','DELETE'])]
+    #[Route('/admin/recettes/{id}/delete', name:'admin.recipes.delete', methods:['DELETE'])]
     public function delete(Recipes $recipes,Request $request, EntityManagerInterface $em):Response
     {
         if ($this->isCsrfTokenValid('recipes_delete_'.$recipes->getId(),$request->request->get('csrf_token')))

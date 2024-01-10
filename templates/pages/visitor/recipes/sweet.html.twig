@@ -20,6 +20,7 @@
         
     <div class="sweet">  
         <div class="container">
+			
 
 			{% for message in app.flashes('success') %}
 
@@ -31,7 +32,7 @@
 			{% endfor %}
 
 			<h1 class="text-center text-light bg-danger display-5 my-5 p-2">{{recipeSweet.title}}</h1>
-            <div class="border border-danger rounded shadow p-4 my-5 bg-light">
+            <div class="border border-danger rounded shadow p-4 my-3 bg-light">
 			    {{recipeSweet.content|raw}}
             </div>
 
@@ -157,5 +158,6 @@
 
             
 		</div>
+		
     </div>
 {% endblock %}

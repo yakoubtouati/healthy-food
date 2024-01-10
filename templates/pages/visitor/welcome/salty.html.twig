@@ -15,18 +15,18 @@
 {% block main %}
 
 
-	<h1 class="text-center text-light  bg-success display-5 p-4 my-auto">Recettes Salées</h1>
+	<h1 class="text-center text-light  bg-success display-5 p-4 my-auto mb-2">Recettes Salées</h1>
 
 
 	<div class="container">
-			<div class="row">
+			<div class="row px-3">
 				{% for recipeSalty in recipesSalty %}
-				<div class="card my-3 col-lg-6 col-md-12 col-sm-12 border-success">
+				<div class="card my-1 col-lg-6 col-md-12 col-sm-12 border-success">
 					<div class="row g-0 h-100">
-						<div class="col-6">
-							<img class="img-fluid w-100 h-100 p-0" src="{{vich_uploader_asset(recipeSalty, 'imageFile') }}" alt="{{ recipeSalty.title }}">
+						<div class="col-12 col-md-6">
+							<img class="img-fluid w-100 h-80 mt-4 rounded" src="{{vich_uploader_asset(recipeSalty, 'imageFile') }}" alt="{{ recipeSalty.title }}">
 						</div>
-						<div class="col-6">
+						<div class="col-12 col-md-6">
 							<div class="card-body">
 								<h3 class="card-title  text-center text-success my-3">{{recipeSalty.title}}</h3>
 								<p class="card-text">{{recipeSalty.content|striptags|u.truncate(100,'....')|raw}}</p>

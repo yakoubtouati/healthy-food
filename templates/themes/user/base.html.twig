@@ -1,5 +1,5 @@
 
-{% set pathInfo = app.request.pathInfo %}
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -17,9 +17,9 @@
 		{# js #}
 		<script src="{{asset('assets/script.js')}}" defer></script>
 		
-		{# SEO #}
-		<meta name="description" content="{% block description %}{% endblock %}">
-		<meta name="keywords" content="{% block keywords %}{% endblock %}">
+		{# OFF SEO #}
+		<meta
+		name="robots" content="noindex, nofollow">
 
 		{# logo onglet favicon  #}
 
@@ -59,94 +59,26 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class=" mx-3 collapse navbar-collapse" id="navbarNavDropdown">
-					<ul class="navbar-nav">
-						<li class="nav-item mx-3">
-							<a class="  nav-link  text-success" 
-							   aria-current="page"
-							   href="{{path('visitor.contact.create')}}">
-							   Contact
-							</a>
-						</li>
-						<li class="nav-item mx-3">
-							<a class="  nav-link text-success" href="{{path('visitor.about.index')}}">Apropos</a>
-						</li>
-						<li class="nav-item dropdown mx-3">
-							<a class=" nav-link dropdown-toggle text-success" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								catégories des recttes 
-							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-								<li>
-									<a class="dropdown-item text-success px-4" href="{{path('visitor.recipes.salty')}}">recettes salées</a>
-								</li>
-								<li>
-									<a class="dropdown-item text-success px-4" href="{{path('visitor.recipes.sweet')}}">recettes sucrés</a>
-								</li>
-								<li>
-									<a class="dropdown-item text-success px-4" href="{{path('visitor.recipes.baby')}}">recettes bébé
-									</a>
-								</li>
-								<li>
-									<a class="dropdown-item text-success px-4" href="{{path('visitor.recipes.jus')}}">jus naturel
-									</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
+
 					<ul class="navbar-nav ms-auto">
 
-					{% if app.user %}
-
-						{% if is_granted('ROLE_ADMIN') %}
-
-							<li class="nav-item dropdown mx-3">
-							<a class="nav-link dropdown-toggle text-success"  id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								<i class="fa-solid fa-power-off fa-lg" style="color: green;"></i>
-								{{app.user.firstName}} {{app.user.lastName}} 
-							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-								<li>
-									<a class="dropdown-item text-success" href="{{path('admin.home.index')}}">Espace Admin</a>
-								</li>
-								<li>
-									<a class="dropdown-item text-danger" href="{{path('visitor.authentication.logout')}}"><i class="fa-solid fa-right-from-bracket fa-md" style="color: #ff2600;"></i>Déconnexion </a>
-								</li>
-							</ul>
-						{% else %}
-
-							<li class="nav-item dropdown mx-5">
-							<a class="nav-link dropdown-toggle text-success"  id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="fa-solid fa-power-off fa-lg" style="color: green;"></i>
-								{{app.user.firstName}} {{app.user.lastName}} 
-							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-								<li>
-									<a class="dropdown-item text-success" href="{{path('user.home.index')}}">Mon Profil</a>
-								</li>
-								<li>
-									<a class="dropdown-item text-danger" href="{{path('visitor.authentication.logout')}}"><i class="fa-solid fa-right-from-bracket fa-lg mr-3" style="color: #ff2600;"></i>Déconnexion </a>
-								</li>
-							</ul>
-						{% endif %}
-							
-					{% else %}
-						
-						<li class="nav-item">
-							<a class="  nav-link active text-success mx-2 " aria-current="page" href="{{path('visitor.authentication.login')}}">Connexion</a>
+						<li>
+							<a class="dropdown-item text-success mx-3" href="{{path('user.home.index')}}"> Mon Profil </a>
 						</li>
-						<li class="nav-item">
-							<a class="  nav-link active btn btn-success text-light mx-2 " aria-current="page" href="{{path('visitor.registration.register')}}">Inscription</a>
+
+						<li>
+							<a class="dropdown-item text-danger mx-3" href="{{path('visitor.authentication.logout')}}"><i class="fa-solid fa-right-from-bracket fa-md" style="color: #ff2600;"></i>Déconnexion </a>
 						</li>
-					{% endif %}
+
+					
 					</ul>
 				</div>
 			</div>
 		</nav>
-
 		{# la partie spécifique de chaque page  #}
 
 		{% block main %}{% endblock %}
 		
-
 		{# Footer #}
 
 		<footer class="bg-success text-light ">

@@ -5,8 +5,42 @@
 
 {% block main %}
 
-	<div>
-        
-    </div>
+	<h1 class="text-light text-center display-5 mb-3 bg-success py-2">Tableau de board
+	</h1>
+	<div class="container">
+		<div class="row mt-5">
+			<div class=" col-10 col-md-5 card border-success m-3 mx-auto">
+				<div class="card-header text-success">Recettes</div>
+				<div class="card-body">
+					<h5 class="card-title p-4 text-success">Nombre total de recettes : <span class="text-danger">{{recipes|length}}</span>
+					</h5>
+				</div>
+			</div>
+			<div class="col-10  col-md-5 card border-success m-3 mx-auto">
+				<div class="card-header text-success">Messages Reçus</div>
+				<div class="card-body">
+					<h5 class="card-title p-4 text-success">Nombre total de messages reçus: <span class="text-danger">{{contact|length}}</span>
+					</h5>
+				</div>
+			</div>
 
-{% endblock %}
+			<div class="col-10  col-md-5 card border-success m-3 mx-auto">
+				<div class="card-header text-success">
+					Les Utilisateurs
+				</div>
+				<div class="card-body">
+					<h5 class="card-title p-4 text-success">
+						Nombre total de utilisateurs: <span class="text-danger">{{user|length -1}}</span>
+					</h5>
+				</div>
+			</div>
+			<div class="col-10  col-md-5 card border-success m-3 mx-auto">
+				<div class="card-header text-success">Les Commentaires
+				</div>
+				<div class="card-body">
+					<h5 class="card-title p-4 text-success">Nombre total de commentaires : <span class="text-danger">{{comment|length}}</span>
+					</h5>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
